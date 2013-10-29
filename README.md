@@ -15,3 +15,4 @@ License and Authors
 Authors:
 
 * Russ Garrett (russ@garrett.co.uk)
+* Brian Oldfield (brian.oldfield@socrata.com)

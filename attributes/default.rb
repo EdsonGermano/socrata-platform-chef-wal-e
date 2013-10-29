@@ -1,9 +1,9 @@
 default[:wal_e][:git_version]         = "v0.6.5"
 
-default[:wal_e][:env_dir]             = '/etc/wal-e'
-default[:wal_e][:aws_access_key]      = ''
-default[:wal_e][:aws_secret_key]      = ''
-default[:wal_e][:s3_prefix]           = ''
+default[:wal_e][:env_dir]                 = '/etc/wal-e'
+default[:wal_e][:wale_storage_secret_key] = ''
+default[:wal_e][:wale_storage_access_id]  = ''
+default[:wal_e][:wale_storage_prefix]     = ''
 
 default[:wal_e][:base_backup][:minute]  = '0'
 default[:wal_e][:base_backup][:hour]    = '0'

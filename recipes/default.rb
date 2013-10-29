@@ -38,9 +38,18 @@ directory node[:wal_e][:env_dir] do
   mode    "0550"
 end
 
-vars = {'AWS_ACCESS_KEY_ID'     => node[:wal_e][:aws_access_key],
-        'AWS_SECRET_ACCESS_KEY' => node[:wal_e][:aws_secret_key],
-        'WALE_S3_PREFIX'        => node[:wal_e][:s3_prefix]}
+vars = {}
+# Make environment configuration backwards compatible
+keys = {'WALE_STORAGE_ACCESS_ID' => [:wale_storage_access_id, :aws_access_key],
+        'WALE_STORAGE_SECRET_KEY' => [:wale_storage_secret_key, :aws_secret_key],
+        'WALE_STORAGE_PREFIX'     => [:wale_storage_prefix, :s3_prefix]}
+keys.each do |key, opts|
+  opts.each do |opt|
+    if node[:wal_e].has_key?(opt)
+      vars[key] = node[:wal_e][opt]
+    end
+  end
+end
 
 vars.each do |key, value|
   file "#{node[:wal_e][:env_dir]}/#{key}" do
