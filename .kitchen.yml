@@ -1,0 +1,27 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+
+platforms:
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+
+suites:
+- name: default
+  run_list:
+    - recipe[wal-e]
+    - recipe[minitest-handler]
+    - recipe[test_wal_e]
+  encrypted_data_bag_secret_key_path: test/cookbooks/test_wal_e/encrypted_data_bag_secret
+  data_bags_path: test/cookbooks/test_wal_e/files/default/data_bags/
+  attributes:
+      wal_e:
+          git_version: e1d8821ba8ca24cebe0040363b63368685adf6be
+          use_encrypted_bag: true
+          encrypted_bag: test
+          user: root
+          group: root
+          pgdata_dir: /data
