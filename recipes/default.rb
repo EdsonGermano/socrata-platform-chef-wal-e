@@ -2,6 +2,12 @@
 # Cookbook Name:: wal-e
 # Recipe:: default
 
+# run apt-get update on debian based systems before trying to install python-dev
+# see: https://tickets.opscode.com/browse/COOK-3240
+if platform_family?('debian')
+  include_recipe 'apt'
+end
+
 #install packages
 node[:wal_e][:packages].each do |pkg|
   package pkg
