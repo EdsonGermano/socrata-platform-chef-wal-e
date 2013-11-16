@@ -21,13 +21,13 @@ default[:wal_e][:git_version]         = "v0.6.5"
 
 default[:wal_e][:env_dir]             = '/etc/wal-e'
 
-default[:wal_e][:aws_access_key]      = ''
-default[:wal_e][:aws_secret_key]      = ''
-default[:wal_e][:s3_prefix]           = ''
+default[:wal_e][:aws_access_key]      = nil
+default[:wal_e][:aws_secret_key]      = nil
+default[:wal_e][:s3_prefix]           = nil
 
-default[:wal_e][:wabs_account_name]   = ''
-default[:wal_e][:wabs_access_key]     = ''
-default[:wal_e][:wabs_prefix]         = ''
+default[:wal_e][:wabs_account_name]   = nil
+default[:wal_e][:wabs_access_key]     = nil
+default[:wal_e][:wabs_prefix]         = nil
 
 # Optionally use encrypted databag to store aws/wabs creds
 default[:wal_e][:use_encrypted_bag]   = nil
